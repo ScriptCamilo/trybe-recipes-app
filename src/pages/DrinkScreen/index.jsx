@@ -2,14 +2,14 @@
 import React, { useEffect, useState, useContext } from 'react';
 import DrinkContext from '../../context/DrinkProvider/DrinkContext';
 
+import data from '../../helpers/apiData';
 import { fetchRecipesByCategory } from '../../services/recipesApi';
 
 import Loading from '../../components/Loading';
 import Header from '../../components/Header';
-import Categories from './components/Categories';
+import Categories from '../../components/Categories';
 import CardsContainer from '../../components/CardsContainer';
 import Footer from '../../components/Footer';
-import data from '../../helpers/apiData';
 
 const { bebidas: { domain, key } } = data;
 
