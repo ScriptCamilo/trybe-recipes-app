@@ -44,6 +44,7 @@ input, textarea, select, button {
 }
 
 button {
+  background-color: transparent;
   color: var(--header);
   cursor: pointer;
 
@@ -57,9 +58,18 @@ button {
 header {
   background-color: #e1e1e1;
   display: flex;
+  font-size: 0.8rem;
   justify-content: space-between;
   padding: 10px 15px;
+  text-align: center;
   width: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  padding: 20% 0;
 }
 
 #search-container {
