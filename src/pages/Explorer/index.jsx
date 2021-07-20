@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer/index';
 
@@ -6,14 +7,14 @@ function Explorer() {
   return (
     <div>
       <Header title="Explorar" icon="false" />
-      <div>
-        <a href="/explorar/comidas">
+      <main>
+        <Link to="/explorar/comidas">
           <h2 data-testid="explore-food">Explorar Comidas</h2>
-        </a>
-        <a href="/explorar/bebidas">
+        </Link>
+        <Link to="/explorar/bebidas">
           <h2 data-testid="explore-drinks">Explorar Bebidas</h2>
-        </a>
-      </div>
+        </Link>
+      </main>
       <Footer />
     </div>
   );
