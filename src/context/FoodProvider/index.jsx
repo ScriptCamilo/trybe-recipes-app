@@ -5,6 +5,7 @@ import {
   filterIngredient,
   filterName,
   filterCategory,
+  fetchCategoriesByArea,
 } from '../../services/recipesApi';
 
 import data from '../../helpers/apiData';
@@ -19,10 +20,19 @@ function FoodProvider({ children }) {
   const categories = useCategories(domain, keyName);
   const [foodRecipesByCategory, setFoodRecipesByCategory] = useState({});
   const [isLoading, setIsLoading] = useState(isFetching);
+  const [categoriesArea, setCategoriesArea] = useState([]);
 
   const [foodApi, setFoodApi] = useState([]);
   const [filterFood, setFilterFood] = useState({ key: 'name', value: '' });
   const { key, value } = filterFood;
+
+  useEffect(() => {
+    const requestCategories = async () => {
+      const res = await fetchCategoriesByArea();
+      setCategoriesArea(res);
+    };
+    requestCategories();
+  }, []);
 
   useEffect(() => {
     async function connect() {
@@ -74,6 +84,7 @@ function FoodProvider({ children }) {
         setFoodApi,
         filterFood,
         setFilterFood,
+        categoriesArea,
       } }
     >
       {children}
