@@ -28,27 +28,32 @@ function DrinkProvider({ children }) {
     async function connect() {
       if (key === 'ing') {
         const i = await filterIngredient(value, 'Drinks');
+        setIsLoading(false);
         return setDrinkApi(i);
       }
       if (key === 'name') {
         const n = await filterName(value, 'Drinks');
+        setIsLoading(false);
         return setDrinkApi(n);
       }
       if (key === 'first') {
         if (value.length > 1) {
           // eslint-disable-next-line no-alert
           alert('Sua busca deve conter somente 1 (um) caracter');
+          setIsLoading(false);
           return;
         }
         const f = await filterFirstLetter(value, 'Drinks');
-        console.log(value);
+        setIsLoading(false);
         return setDrinkApi(f);
       }
       if (key === 'category') {
         const c = await filterCategory(value, 'Drinks');
+        setIsLoading(false);
         return setDrinkApi(c);
       }
     }
+    setIsLoading(true);
     connect();
   }, [key, value]);
 
