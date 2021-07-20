@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
-import Categories from './components/Categories';
-import RenderCards from './components/RenderCards';
 import DrinkContext from '../../context/DrinkProvider/DrinkContext';
 
 import { fetchRecipesByCategory } from '../../services/recipesApi';
 
 import Loading from '../../components/Loading';
 import Header from '../../components/Header';
+import Categories from './components/Categories';
+import CardsContainer from '../../components/CardsContainer';
 import Footer from '../../components/Footer';
 import data from '../../helpers/apiData';
 
@@ -67,12 +67,13 @@ function DrinkScreen() {
         categories={ categories }
         renderRecipesByCategory={ renderRecipesByCategory }
       />
-      {isLoading ? <Loading /> : <RenderCards
+      {isLoading ? <Loading /> : <CardsContainer
         currentCategory={ currentCategory }
-        drinkRecipes={ drinkRecipes }
-        drinkRecipesByCategory={ drinkRecipesByCategory }
+        propsRecipes={ drinkRecipes }
+        propsRecipesByCategory={ drinkRecipesByCategory }
+        propsApi={ drinkApi }
+        paramsApi="drinks"
         isLoading={ isLoading }
-        drinkApi={ drinkApi }
       />}
       <Footer />
     </div>

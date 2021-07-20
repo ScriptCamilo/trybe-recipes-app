@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
-import Categories from './components/Categories';
-import RenderCards from './components/RenderCards';
 import FoodContext from '../../context/FoodProvider/FoodContext';
 import { fetchRecipesByCategory } from '../../services/recipesApi';
 
 import data from '../../helpers/apiData';
+
+import CardsContainer from '../../components/CardsContainer';
 import Loading from '../../components/Loading';
 import Header from '../../components/Header';
+import Categories from './components/Categories';
 import Footer from '../../components/Footer';
 
 const { comidas: { domain, key } } = data;
@@ -59,21 +60,24 @@ function MealScreen() {
     setCurrentCategory(category);
   }
   return (
-    <div>
+    <>
       <Header title="Comidas" icon="true" currentPage="Foods" />
-      <Categories
-        categories={ categories }
-        renderRecipesByCategory={ renderRecipesByCategory }
-      />
-      {isLoading ? <Loading /> : <RenderCards
-        currentCategory={ currentCategory }
-        foodRecipes={ foodRecipes }
-        foodRecipesByCategory={ foodRecipesByCategory }
-        isLoading={ isLoading }
-        foodApi={ foodApi }
-      />}
+      <main>
+        <Categories
+          categories={ categories }
+          renderRecipesByCategory={ renderRecipesByCategory }
+        />
+        {isLoading ? <Loading /> : <CardsContainer
+          currentCategory={ currentCategory }
+          propsRecipes={ foodRecipes }
+          propsRecipesByCategory={ foodRecipesByCategory }
+          propsApi={ foodApi }
+          paramsApi="meals"
+          isLoading={ isLoading }
+        />}
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
