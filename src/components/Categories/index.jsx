@@ -14,7 +14,7 @@ function Categories(props) {
         handleClick={ renderRecipesByCategory }
         selected="selected"
       >
-        All
+        <span>All</span>
       </Button>
       {categories.map(({ strCategory }) => (
         <Button
@@ -22,7 +22,7 @@ function Categories(props) {
           data-testid={ `${strCategory}-category-filter` }
           handleClick={ renderRecipesByCategory }
         >
-          {strCategory}
+          <span>{strCategory}</span>
         </Button>))}
     </nav>
   );
