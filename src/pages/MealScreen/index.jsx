@@ -49,12 +49,17 @@ function MealScreen() {
   function renderRecipesByCategory({ target }) {
     const category = target.textContent;
     const previousCategory = document.querySelector('#selected');
+    const { tagName } = previousCategory;
     const loadedCategories = Object.keys(foodRecipesByCategory);
 
     previousCategory.id = '';
 
     if (previousCategory === target) {
-      const allCategory = target.parentElement.firstElementChild;
+      const isTagSpan = tagName === 'SPAN';
+      console.log(tagName);
+      const parentSpan = target.parentElement.parentElement.firstElementChild;
+      const parentButton = target.parentElement.firstElementChild;
+      const allCategory = isTagSpan ? parentSpan : parentButton;
       allCategory.id = 'selected';
     } else {
       target.id = 'selected';

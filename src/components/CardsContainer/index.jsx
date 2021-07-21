@@ -1,5 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router';
+
+import styles from './cards.module.scss';
+
 import MainCard from '../MainCard';
 
 function CardsContainer(props) {
@@ -38,16 +41,22 @@ function CardsContainer(props) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
 
-  return recipes.map((recipe, index) => (
-    <MainCard
-      key={ index }
-      index={ index }
-      id={ recipe[apiKeys.id] }
-      name={ recipe[apiKeys.str] }
-      thumb={ recipe[apiKeys.thumb] }
-      currentPage={ currentPage }
-    />
-  ));
+  return (
+    <section className={ styles.cards }>
+      {
+        recipes.map((recipe, index) => (
+          <MainCard
+            key={ index }
+            index={ index }
+            id={ recipe[apiKeys.id] }
+            name={ recipe[apiKeys.str] }
+            thumb={ recipe[apiKeys.thumb] }
+            currentPage={ currentPage }
+          />
+        ))
+      }
+    </section>
+  );
 }
 
 export default CardsContainer;

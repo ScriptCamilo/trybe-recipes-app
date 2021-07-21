@@ -64,7 +64,6 @@ button {
 }
 
 header {
-  background-color: #e1e1e1;
   display: flex;
   font-size: 0.8rem;
   justify-content: space-between;
@@ -72,6 +71,14 @@ header {
   text-align: center;
   width: 100%;
 }
+
+// span {
+// font-weight: 700;
+// max-width: 15ch;
+// overflow: hidden;
+// text-overflow: ellipsis;
+// white-space: nowrap;
+// }
 
 #selected {
   background-color: var(--primary);
