@@ -1,10 +1,22 @@
 .recommendations {
   display: flex;
+  margin-bottom: 65px;
   overflow-x: scroll;
   width: 100%;
 
   div {
-    background-color: rgb(221, 214, 214);
+
+    h3, p {
+      margin: 2px 5px 0;
+    }
+
+    h3 {
+      color: var(--main);
+      font-size: 25px;
+      text-shadow: 1px 1px 5px var(--border);
+    }
+    background-color: var(--primary);
+    border-radius: 9px;
     display: flex;
     flex-flow: wrap column;
     height: 172px;
@@ -12,6 +24,7 @@
     width: 161px;
 
     img {
+      border-radius: 9px 9px 0 0;
       height: 115px;
       width: 161px;
     }

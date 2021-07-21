@@ -85,25 +85,27 @@ header {
 }
 
 #search-container {
+
   input {
-    height: 25px;
-    border-radius: 8px;
     background: #fefefe;
-    width: 99%;
+    border-radius: 8px;
+    height: 25px;
     margin: 5px;
+    width: 99%;
   }
 
   button {
-    height: 25px;
-    border-radius: 8px;
-    font-weight: 500;
     background: #835afd;
-    color: #FFF;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    height: 25px;
     padding: 0 32px;
   }
+
   section {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: space-around;
 
     label {

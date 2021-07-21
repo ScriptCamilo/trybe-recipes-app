@@ -7,7 +7,7 @@ function Recommendations({ name, category, recommendedRecipes }) {
   let path = '/comidas';
   if (name === 'Drink') path = '/bebidas';
   return (
-    <div>
+    <div className={ styles.recommendationsContainer }>
       <h2>Recommended</h2>
       <div className={ styles.recommendations }>
         {recommendedRecipes.map((recipe, index) => (
