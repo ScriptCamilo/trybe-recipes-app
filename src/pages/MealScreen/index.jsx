@@ -56,13 +56,16 @@ function MealScreen() {
 
     if (previousCategory === target) {
       const isTagSpan = tagName === 'SPAN';
-      console.log(tagName);
+      console.log('entrei aqui');
       const parentSpan = target.parentElement.parentElement.firstElementChild;
       const parentButton = target.parentElement.firstElementChild;
       const allCategory = isTagSpan ? parentSpan : parentButton;
       allCategory.id = 'selected';
     } else {
-      target.id = 'selected';
+      const isTagSpan = target.tagName === 'SPAN';
+      const parentSpan = target.parentElement;
+      const targetBackground = isTagSpan ? parentSpan : target;
+      targetBackground.id = 'selected';
     }
 
     if (category === currentCategory) return setCurrentCategory('All');
