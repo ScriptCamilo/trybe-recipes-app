@@ -1,28 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './categories.module.scss';
+
+import Button from '../Button';
+
 function Categories(props) {
   const { categories, renderRecipesByCategory } = props;
   return (
-    <div>
-      <button
-        type="button"
+    <nav className={ styles.categories }>
+      <Button
         data-testid="All-category-filter"
-        onClick={ renderRecipesByCategory }
+        handleClick={ renderRecipesByCategory }
       >
         All
-      </button>
+      </Button>
       {categories.map(({ strCategory }) => (
-        <button
-          className="btn-filter"
-          type="button"
+        <Button
           key={ strCategory }
           data-testid={ `${strCategory}-category-filter` }
-          onClick={ renderRecipesByCategory }
+          handleClick={ renderRecipesByCategory }
         >
           {strCategory}
-        </button>))}
-    </div>
+        </Button>))}
+    </nav>
   );
 }
 
