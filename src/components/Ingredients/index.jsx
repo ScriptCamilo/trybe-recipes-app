@@ -30,7 +30,6 @@ function Ingredients() {
   }, []);
 
   function filterByIngredients(strIngredient) {
-    data.setIsLoading(true);
     apiProps.setFilter({ key: 'ing', value: strIngredient });
   }
 
