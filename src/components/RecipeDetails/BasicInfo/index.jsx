@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../../../pages/DetailScreen/details.module.scss';
 
 function BasicInfo(props) {
   const { category, name, recipe } = props;
 
   return (
-    <div>
+    <div className={ styles.basicInfoContainer }>
       <img
         data-testid="recipe-photo"
         src={ recipe[`str${name}Thumb`] }

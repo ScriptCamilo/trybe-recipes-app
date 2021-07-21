@@ -4,6 +4,7 @@ import useRecipes from '../../hooks/useRecipes';
 import useRecipeDetails from '../../hooks/useRecipeDetails';
 import data from '../../helpers/apiData';
 import '../../styles/global.scss';
+import styles from './details.module.scss';
 
 import Loading from '../../components/Loading';
 import BasicInfo from '../../components/RecipeDetails/BasicInfo';
@@ -43,7 +44,7 @@ function DetailScreen() {
 
   function renderDetails() {
     return (
-      <>
+      <div className={ styles.detailsContainer }>
         <BasicInfo
           name={ type.name }
           category={ type.category }
@@ -70,7 +71,7 @@ function DetailScreen() {
         />
 
         <StartRecipe id={ id } pathname={ pathname } />
-      </>
+      </div>
     );
   }
 

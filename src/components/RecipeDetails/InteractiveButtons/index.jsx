@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { string, objectOf } from 'prop-types';
 import { useLocation } from 'react-router-dom';
+import { GiShare, GiHearts } from 'react-icons/gi';
 
-import styles from './buttons.module.scss';
+import styles from '../../../pages/DetailScreen/details.module.scss';
 import handleStorage from '../../../helpers/handleStorage';
-
-import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 
 function InteractiveButtons({ id, recipeDetails, type, foodOrDrink }) {
   let { pathname } = useLocation();
@@ -38,29 +36,30 @@ function InteractiveButtons({ id, recipeDetails, type, foodOrDrink }) {
     favoriteToggle();
   };
 
-  let favoriteColor = whiteHeartIcon;
-  if (isFavorite) favoriteColor = blackHeartIcon;
+  let favoriteColor = 'greyHeartIcon';
+  if (isFavorite) favoriteColor = 'redHeartIcon';
 
   return (
-    <div>
+    <div className={ styles.interactiveBtnsContainer }>
       <div>
         <button
           type="button"
-          id="share-btn"
           className={ styles.shareButton }
           onClick={ copyToClipBoard }
           data-testid="share-btn"
         >
-          {' '}
+          <GiShare size="2rem" />
         </button>
+
         <button
           type="button"
           id="favorite-btn"
-          className={ styles.favoriteButton }
+          className={ styles[favoriteColor] }
           onClick={ handleClick }
         >
-          <img data-testid="favorite-btn" src={ favoriteColor } alt="heart" />
+          <GiHearts size="2rem" />
         </button>
+
       </div>
 
       {isCopy && <span>Link copiado!</span>}

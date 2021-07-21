@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../../../pages/DetailScreen/details.module.scss';
 
 function Ingredients(props) {
   const { recipe } = props;
@@ -28,7 +29,7 @@ function Ingredients(props) {
   const arrResult = createArrOfIngredientsAndMeasures();
 
   return (
-    <div>
+    <div className={ styles.ingredientsDetailsContainer }>
       <h2>Ingredients</h2>
       <ul>
         {arrResult.map(([key, value], index) => (

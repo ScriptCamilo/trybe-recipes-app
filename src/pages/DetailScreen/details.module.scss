@@ -1,1 +1,88 @@
 // CSS Da DetailsScreen
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: var(--paragraph);
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-left: 5px;
+  }
+}
+
+.interactiveBtnsContainer {
+  position: absolute;
+  right: 5px;
+  top: 370px;
+
+  button {
+    border: none;
+  }
+
+  .shareButton {
+    height: 30px;
+    margin-right: 5px;
+    width: 30px;
+  }
+
+  .greyHeartIcon {
+    color: grey;
+    opacity: 0.7;
+  }
+
+  .redHeartIcon {
+    color: var(--aside);
+  }
+}
+
+.ingredientsDetailsContainer {
+  margin: 10px 0;
+
+  ul {
+    background-color: var(--primary);
+    box-shadow: 0 1px 10px var(--border);
+    padding: 10px;
+
+    li {
+      color: var(--paragraph);
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
+
+.basicInfoContainer {
+  box-shadow: 0 1px 10px var(--border);
+  margin-bottom: 15px;
+
+  h1, p {
+    margin-left: 5px;
+  }
+}
+
+.instructionsContainer {
+  margin: 10px 0;
+
+  p {
+    box-shadow: 0 1px 10px var(--border);
+    padding: 10px;
+    text-align: justify;
+  }
+}
+
+.videoRecipeContainer {
+  margin: 10px 0;
+
+  iframe {
+    background-color: var(--primary);
+    // border-radius: 9px;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+  }
+}

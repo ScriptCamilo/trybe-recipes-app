@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import data from '../../../helpers/apiData';
+import styles from '../../../pages/DetailScreen/details.module.scss';
 
 const { comidas: { name: Meal } } = data;
 
@@ -17,7 +18,7 @@ function VideoRecipe(props) {
   const urlYT = getUrlYt();
 
   const renderVideo = () => (
-    <>
+    <div className={ styles.videoRecipeContainer }>
       <h2>Video</h2>
       <iframe
         data-testid="video"
@@ -34,7 +35,7 @@ function VideoRecipe(props) {
           picture-in-picture"
         allowFullScreen
       />
-    </>
+    </div>
   );
 
   return (
