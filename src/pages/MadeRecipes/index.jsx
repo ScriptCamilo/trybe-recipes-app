@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GiShare } from 'react-icons/gi';
 import Header from '../../components/Header';
 import styles from './madeRecipes.module.scss';
-import shareIcon from '../../images/shareIcon.svg';
 import FilterButtons from '../../components/FilterButtons';
 
 function MadeRecipes() {
@@ -40,13 +40,12 @@ function MadeRecipes() {
         </div>
         <div>
           <button
-            src={ shareIcon }
             type="button"
             className={ styles.shareButton }
             onClick={ () => copyToClipBoard(recipe) }
             data-testid={ `${index}-horizontal-share-btn` }
           >
-            {' '}
+            <GiShare size="2rem" />
           </button>
         </div>
 
