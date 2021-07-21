@@ -67,7 +67,7 @@ function Login() {
           isSubmit
           dataTestid="login-submit-btn"
           handleClick={ handleSubmit }
-          isValidated={ !isValidated }
+          isDisabled={ !isValidated }
         >
           <span>ENTRAR</span>
           {' '}

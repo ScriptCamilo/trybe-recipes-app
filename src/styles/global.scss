@@ -43,6 +43,14 @@ input, textarea, select, button {
   outline: none;
 }
 
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  padding: 20% 0;
+}
+
 button {
   background-color: transparent;
   color: var(--header);
@@ -63,13 +71,6 @@ header {
   padding: 10px 15px;
   text-align: center;
   width: 100%;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  height: 60%;
-  padding: 20% 0;
 }
 
 #search-container {

@@ -3,7 +3,7 @@ import { useLocation, useParams, useHistory } from 'react-router-dom';
 
 import useRecipeDetails from '../../../hooks/useRecipeDetails';
 import data from '../../../helpers/apiData';
-import '../../../styles/global.scss';
+import styles from './progress.module.scss';
 
 import Loading from '../../../components/Loading';
 import BasicInfo from '../../../components/RecipeDetails/BasicInfo';
@@ -108,7 +108,7 @@ function InProgress() {
         <Button
           handleClick={ handleClick }
           dataTestid="finish-recipe-btn"
-          isValidated={ !isButtonValidated }
+          isDisabled={ !isButtonValidated }
         >
           <span>Finish</span>
         </Button>

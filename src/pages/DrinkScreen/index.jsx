@@ -61,22 +61,24 @@ function DrinkScreen() {
   }
 
   return (
-    <div>
+    <>
       <Header title="Bebidas" icon="true" currentPage="Drink" />
-      <Categories
-        categories={ categories }
-        renderRecipesByCategory={ renderRecipesByCategory }
-      />
-      {isLoading ? <Loading /> : <CardsContainer
-        currentCategory={ currentCategory }
-        propsRecipes={ drinkRecipes }
-        propsRecipesByCategory={ drinkRecipesByCategory }
-        propsApi={ drinkApi }
-        paramsApi="drinks"
-        isLoading={ isLoading }
-      />}
+      <main>
+        <Categories
+          categories={ categories }
+          renderRecipesByCategory={ renderRecipesByCategory }
+        />
+        {isLoading ? <Loading /> : <CardsContainer
+          currentCategory={ currentCategory }
+          propsRecipes={ drinkRecipes }
+          propsRecipesByCategory={ drinkRecipesByCategory }
+          propsApi={ drinkApi }
+          paramsApi="drinks"
+          isLoading={ isLoading }
+        />}
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

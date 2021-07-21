@@ -50,7 +50,6 @@ function ExploreIngredientsDrinks() {
           </span>
         </div>
       </Link>
-
     ));
   }
 
