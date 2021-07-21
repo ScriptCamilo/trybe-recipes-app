@@ -6,8 +6,7 @@ import InProgress from '../pages/DetailScreen/InProgress';
 import Explorer from '../pages/Explorer';
 import ExploreFoods from '../pages/Explorer/Food';
 import ExploreDrinks from '../pages/Explorer/Drink';
-import ExploreIngredientsFood from '../pages/Explorer/Food/Ingredients';
-import ExploreIngredientsDrink from '../pages/Explorer/Drink/Ingredients';
+import ExploreIngredients from '../components/Ingredients';
 import FoodOrigins from '../pages/Explorer/Food/Origin';
 import Profile from '../pages/Profile';
 import FavoriteScreen from '../pages/FavoriteScreen';
@@ -69,12 +68,12 @@ const routes = [
   {
     path: '/explorar/comidas/ingredientes',
     exact: true,
-    component: ExploreIngredientsFood,
+    component: ExploreIngredients,
   },
   {
     path: '/explorar/bebidas/ingredientes',
     exact: true,
-    component: ExploreIngredientsDrink,
+    component: ExploreIngredients,
   },
   {
     path: '/explorar/comidas/area',
