@@ -21,7 +21,7 @@ function DrinkProvider({ children }) {
   const [isLoading, setIsLoading] = useState(isFetching);
 
   const [drinkApi, setDrinkApi] = useState([]);
-  const [filterDrink, setFilterDrink] = useState({ key: 'name', value: '' });
+  const [filterDrink, setFilterDrink] = useState({ key: '', value: '' });
   const { key, value } = filterDrink;
 
   useEffect(() => {

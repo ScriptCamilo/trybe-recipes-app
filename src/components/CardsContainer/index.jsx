@@ -4,36 +4,37 @@ import MainCard from '../MainCard';
 
 function CardsContainer(props) {
   const {
+    currentPage,
     currentCategory,
     propsRecipes,
     propsRecipesByCategory,
-    isLoading,
     propsApi,
-    paramsApi,
+    propsKey,
+    isLoading,
   } = props;
 
-  const isMeal = paramsApi === 'meals';
+  const isKeyMeal = propsKey === 'meals';
 
-  const apiProps = {
-    id: isMeal ? 'idMeal' : 'idDrink',
-    str: isMeal ? 'strMeal' : 'strDrink',
-    thumb: isMeal ? 'strMealThumb' : 'strDrinkThumb',
+  const apiKeys = {
+    id: isKeyMeal ? 'idMeal' : 'idDrink',
+    str: isKeyMeal ? 'strMeal' : 'strDrink',
+    thumb: isKeyMeal ? 'strMealThumb' : 'strDrinkThumb',
   };
 
   const SIZE = 12;
 
   let recipes = propsRecipes;
-  const params = propsApi[paramsApi];
-  if (params) {
-    recipes.slice(0, SIZE);
-    if (params.length === 1) {
-      return <Redirect to={ `/comidas/${params[0][apiProps.id]}` } />;
+  const apiValue = propsApi[propsKey];
+  if (apiValue) {
+    recipes = apiValue.slice(0, SIZE);
+    if (apiValue.length === 1) {
+      return <Redirect to={ `/comidas/${apiValue[0][apiKeys.id]}` } />;
     }
   }
   if (currentCategory !== 'All' && !isLoading) {
     recipes = propsRecipesByCategory[currentCategory];
   }
-  if (params === null) {
+  if (apiValue === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
 
@@ -41,9 +42,10 @@ function CardsContainer(props) {
     <MainCard
       key={ index }
       index={ index }
-      id={ recipe[apiProps.id] }
-      name={ recipe[apiProps.str] }
-      thumb={ recipe[apiProps.thumb] }
+      id={ recipe[apiKeys.id] }
+      name={ recipe[apiKeys.str] }
+      thumb={ recipe[apiKeys.thumb] }
+      currentPage={ currentPage }
     />
   ));
 }

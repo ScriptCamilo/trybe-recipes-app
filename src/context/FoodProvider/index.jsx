@@ -23,7 +23,7 @@ function FoodProvider({ children }) {
   const [categoriesArea, setCategoriesArea] = useState([]);
 
   const [foodApi, setFoodApi] = useState([]);
-  const [filterFood, setFilterFood] = useState({ key: 'name', value: '' });
+  const [filterFood, setFilterFood] = useState({ key: '', value: '' });
   const { key, value } = filterFood;
 
   useEffect(() => {

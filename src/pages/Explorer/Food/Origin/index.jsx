@@ -14,40 +14,45 @@ const MEALS_SIZE = 12;
 function FoodOrigin() {
   const {
     foodRecipes,
-    isLoading,
-    setIsLoading,
     foodApi,
     categoriesArea,
+    isLoading,
+    setIsLoading,
   } = useContext(FoodContext);
-  const [filteredRecipes, setFilteredRecipes] = useState([]);
+
+  const [filteredRecipes, setFilteredRecipes] = useState(foodRecipes);
   const history = useHistory();
   const [currentCategory, setCurrentCategory] = useState('All');
-
-  useEffect(() => {
-    function selectAll() {
-      if (currentCategory === 'All') setFilteredRecipes(foodRecipes);
-    }
-    selectAll();
-  });
 
   function handleSelect({ target }) {
     setCurrentCategory(target.value);
   }
 
   useEffect(() => {
+    console.log('Get Area');
     async function requestRecipe() {
-      const res = await filterByArea(currentCategory);
-      setFilteredRecipes(res);
-      setIsLoading(false);
+      try {
+        const res = await filterByArea(currentCategory);
+        setFilteredRecipes(res);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     }
-    setIsLoading(true);
-    requestRecipe();
+    if (currentCategory !== 'All') {
+      setIsLoading(true);
+      requestRecipe();
+    } else {
+      setFilteredRecipes(foodRecipes);
+    }
   }, [currentCategory]);
 
   useEffect(() => {
     const { meals } = foodApi;
     if (meals) {
+      console.log('foodApi');
       setFilteredRecipes(meals);
+      console.log(meals);
       if (meals.length === 1) {
         history.push(`/comidas/${meals[0].idMeal}`);
       }
@@ -57,6 +62,8 @@ function FoodOrigin() {
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   }, [foodApi]);
+
+  console.log(filteredRecipes);
 
   return (
     <>
