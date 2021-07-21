@@ -29,15 +29,16 @@ function Ingredients() {
     getIngredients();
   }, []);
 
-  function filterByIngredients(ingredient) {
-    apiProps.setFilter({ key: 'ing', value: ingredient });
+  function filterByIngredients(strIngredient) {
+    data.setIsLoading(true);
+    apiProps.setFilter({ key: 'ing', value: strIngredient });
   }
 
   function renderIngredients() {
     return ingredients.map((ingredient, index) => (
       <Link
         key={ index }
-        to="/comidas"
+        to={ isMeal ? '/comidas' : '/bebidas' }
         onClick={ () => filterByIngredients(ingredient[apiProps.str]) }
       >
         <div
@@ -48,7 +49,7 @@ function Ingredients() {
           <img
             className={ styles.img }
             alt={ ingredient[apiProps.str] }
-            src={ `https://www.themealdb.com/images/ingredients/${ingredient[apiProps.str]}-Small.png` }
+            src={ `https://www.${apiProps.domain}.com/images/ingredients/${ingredient[apiProps.str]}-Small.png` }
             data-testid={ `${index}-card-img` }
           />
           <span data-testid={ `${index}-card-name` } className={ styles.cardName }>
