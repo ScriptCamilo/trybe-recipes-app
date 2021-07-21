@@ -48,7 +48,17 @@ function DrinkScreen() {
 
   async function renderRecipesByCategory({ target }) {
     const category = target.textContent;
+    const previousCategory = document.querySelector('#selected');
     const loadedCategories = Object.keys(drinkRecipesByCategory);
+
+    previousCategory.id = '';
+
+    if (previousCategory === target) {
+      const allCategory = target.parentElement.firstElementChild;
+      allCategory.id = 'selected';
+    } else {
+      target.id = 'selected';
+    }
 
     if (category === currentCategory) return setCurrentCategory('All');
 
@@ -68,14 +78,16 @@ function DrinkScreen() {
           categories={ categories }
           renderRecipesByCategory={ renderRecipesByCategory }
         />
-        {isLoading ? <Loading /> : <CardsContainer
-          currentCategory={ currentCategory }
-          propsRecipes={ drinkRecipes }
-          propsRecipesByCategory={ drinkRecipesByCategory }
-          propsApi={ drinkApi }
-          paramsApi="drinks"
-          isLoading={ isLoading }
-        />}
+        {isLoading ? <Loading /> : (
+          <CardsContainer
+            currentCategory={ currentCategory }
+            propsRecipes={ drinkRecipes }
+            propsRecipesByCategory={ drinkRecipesByCategory }
+            propsApi={ drinkApi }
+            propsKey="drinks"
+            isLoading={ isLoading }
+          />
+        )}
       </main>
       <Footer />
     </>

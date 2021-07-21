@@ -48,7 +48,17 @@ function MealScreen() {
 
   function renderRecipesByCategory({ target }) {
     const category = target.textContent;
+    const previousCategory = document.querySelector('#selected');
     const loadedCategories = Object.keys(foodRecipesByCategory);
+
+    previousCategory.id = '';
+
+    if (previousCategory === target) {
+      const allCategory = target.parentElement.firstElementChild;
+      allCategory.id = 'selected';
+    } else {
+      target.id = 'selected';
+    }
 
     if (category === currentCategory) return setCurrentCategory('All');
 
@@ -67,14 +77,16 @@ function MealScreen() {
           categories={ categories }
           renderRecipesByCategory={ renderRecipesByCategory }
         />
-        {isLoading ? <Loading /> : <CardsContainer
-          currentCategory={ currentCategory }
-          propsRecipes={ foodRecipes }
-          propsRecipesByCategory={ foodRecipesByCategory }
-          propsApi={ foodApi }
-          paramsApi="meals"
-          isLoading={ isLoading }
-        />}
+        {isLoading ? <Loading /> : (
+          <CardsContainer
+            currentCategory={ currentCategory }
+            propsRecipes={ foodRecipes }
+            propsRecipesByCategory={ foodRecipesByCategory }
+            propsApi={ foodApi }
+            propsKey="meals"
+            isLoading={ isLoading }
+          />
+        )}
       </main>
       <Footer />
     </>

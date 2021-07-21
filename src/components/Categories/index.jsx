@@ -12,6 +12,7 @@ function Categories(props) {
       <Button
         data-testid="All-category-filter"
         handleClick={ renderRecipesByCategory }
+        selected="selected"
       >
         All
       </Button>

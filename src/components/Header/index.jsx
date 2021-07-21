@@ -13,9 +13,7 @@ import styles from './header.module.scss';
 
 function Header({ title, icon, currentPage }) {
   const [isSearch, setIsSearch] = useState(false);
-  const handleSearch = () => {
-    setIsSearch(!isSearch);
-  };
+  const handleSearch = () => setIsSearch(!isSearch);
 
   return (
     <>
