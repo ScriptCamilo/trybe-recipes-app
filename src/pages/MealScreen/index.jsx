@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import FoodContext from '../../context/FoodProvider/FoodContext';
 import { fetchRecipesByCategory } from '../../services/recipesApi';
 
+import styles from './meal.module.scss';
 import data from '../../helpers/apiData';
 
 import Loading from '../../components/Loading';
@@ -22,6 +23,8 @@ function MealScreen() {
     isLoading,
     setIsLoading,
     foodApi,
+    isSearch,
+    setIsSearch,
   } = useContext(FoodContext);
 
   const [currentCategory, setCurrentCategory] = useState('All');
@@ -49,22 +52,20 @@ function MealScreen() {
   function renderRecipesByCategory({ target }) {
     const category = target.textContent;
     const previousCategory = document.querySelector('#selected');
-    const { tagName } = previousCategory;
     const loadedCategories = Object.keys(foodRecipesByCategory);
+    const isTargetSpan = target.tagName === 'SPAN';
+    const targetParent = target.parentElement;
+    const targetSelected = isTargetSpan ? targetParent : target;
 
     previousCategory.id = '';
 
-    if (previousCategory === target) {
-      const isTagSpan = tagName === 'SPAN';
-      console.log('entrei aqui');
-      const parentSpan = target.parentElement.parentElement.firstElementChild;
+    if (previousCategory === targetSelected) {
+      const parentSpan = targetParent.parentElement.firstElementChild;
       const parentButton = target.parentElement.firstElementChild;
-      const allCategory = isTagSpan ? parentSpan : parentButton;
+      const allCategory = isTargetSpan ? parentSpan : parentButton;
       allCategory.id = 'selected';
     } else {
-      const isTagSpan = target.tagName === 'SPAN';
-      const parentSpan = target.parentElement;
-      const targetBackground = isTagSpan ? parentSpan : target;
+      const targetBackground = isTargetSpan ? targetParent : target;
       targetBackground.id = 'selected';
     }
 
@@ -79,8 +80,14 @@ function MealScreen() {
   }
   return (
     <>
-      <Header title="Comidas" icon="true" currentPage="Foods" />
-      <main>
+      <Header
+        title="Comidas"
+        icon="true"
+        currentPage="Foods"
+        isSearch={ isSearch }
+        setIsSearch={ setIsSearch }
+      />
+      <main className={ isSearch ? styles.isSearch : '' }>
         <Categories
           categories={ categories }
           renderRecipesByCategory={ renderRecipesByCategory }

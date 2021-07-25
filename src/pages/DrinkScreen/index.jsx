@@ -4,6 +4,7 @@ import DrinkContext from '../../context/DrinkProvider/DrinkContext';
 
 import data from '../../helpers/apiData';
 import { fetchRecipesByCategory } from '../../services/recipesApi';
+import styles from './drink.module.scss';
 
 import Loading from '../../components/Loading';
 import Header from '../../components/Header';
@@ -22,6 +23,8 @@ function DrinkScreen() {
     isLoading,
     setIsLoading,
     drinkApi,
+    isSearch,
+    setIsSearch,
   } = useContext(DrinkContext);
 
   const [currentCategory, setCurrentCategory] = useState('All');
@@ -50,14 +53,20 @@ function DrinkScreen() {
     const category = target.textContent;
     const previousCategory = document.querySelector('#selected');
     const loadedCategories = Object.keys(drinkRecipesByCategory);
+    const isTargetSpan = target.tagName === 'SPAN';
+    const targetParent = target.parentElement;
+    const targetSelected = isTargetSpan ? targetParent : target;
 
     previousCategory.id = '';
 
-    if (previousCategory === target) {
-      const allCategory = target.parentElement.firstElementChild;
+    if (previousCategory === targetSelected) {
+      const parentSpan = targetParent.parentElement.firstElementChild;
+      const parentButton = target.parentElement.firstElementChild;
+      const allCategory = isTargetSpan ? parentSpan : parentButton;
       allCategory.id = 'selected';
     } else {
-      target.id = 'selected';
+      const targetBackground = isTargetSpan ? targetParent : target;
+      targetBackground.id = 'selected';
     }
 
     if (category === currentCategory) return setCurrentCategory('All');
@@ -72,8 +81,14 @@ function DrinkScreen() {
 
   return (
     <>
-      <Header title="Bebidas" icon="true" currentPage="Drink" />
-      <main>
+      <Header
+        title="Bebidas"
+        icon="true"
+        currentPage="Drink"
+        isSearch={ isSearch }
+        setIsSearch={ setIsSearch }
+      />
+      <main className={ isSearch ? styles.isSearch : '' }>
         <Categories
           categories={ categories }
           renderRecipesByCategory={ renderRecipesByCategory }

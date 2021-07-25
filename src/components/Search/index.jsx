@@ -1,7 +1,12 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+
+import styles from './search.module.scss';
+
 import FoodContext from '../../context/FoodProvider/FoodContext';
 import DrinkContext from '../../context/DrinkProvider/DrinkContext';
+
+import Button from '../Button';
 
 function Search({ currentPage }) {
   const { setFilterFood } = useContext(FoodContext);
@@ -18,8 +23,12 @@ function Search({ currentPage }) {
     });
   }
 
-  function handleClick() {
+  function handleClick({ target }) {
     const { inputSearch, selectedFilter } = inputChange;
+    const previousCategory = document.querySelector('#selected');
+    const isTargetSpan = target.tagName === 'SPAN';
+    const targetParent = target.parentElement;
+    const targetSelected = isTargetSpan ? targetParent : target;
 
     if (selectedFilter === 'first' && inputSearch.length > 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
@@ -29,6 +38,20 @@ function Search({ currentPage }) {
       });
       return;
     }
+
+    previousCategory.id = '';
+
+    if (previousCategory === targetSelected) {
+      const parentSpan = targetParent.parentElement.firstElementChild;
+      const parentButton = target.parentElement.firstElementChild;
+      const allCategory = isTargetSpan ? parentSpan : parentButton;
+      allCategory.id = 'selected';
+    } else {
+      const targetBackground = isTargetSpan ? targetParent : target;
+      console.log('else');
+      targetBackground.id = 'selected';
+    }
+
     if (currentPage === 'Foods') {
       setFilterFood({
         key: selectedFilter,
@@ -43,16 +66,17 @@ function Search({ currentPage }) {
   }
 
   return (
-    <div id="search-container">
+    <div className={ styles.search }>
       <input
         type="text"
         data-testid="search-input"
         onChange={ handleChange }
+        placeholder="Search"
         className="input-search"
         name="inputSearch"
         value={ inputChange.inputSearch }
       />
-      <section className="radio">
+      <section className={ styles.radio }>
         <label htmlFor="ingredients">
           Ingredientes:
           <input
@@ -87,13 +111,13 @@ function Search({ currentPage }) {
           />
         </label>
       </section>
-      <button
-        data-testid="exec-search-btn"
-        type="submit"
-        onClick={ handleClick }
+      <Button
+        dataTestid="exec-search-btn"
+        handleClick={ handleClick }
+        isSubmit
       >
-        Buscar
-      </button>
+        Apply
+      </Button>
     </div>
   );
 }

@@ -1,0 +1,41 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+  padding-top: 20%;
+
+  input {
+    background: #fefefe;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 10px;
+  }
+
+  button {
+    align-self: center;
+    background-color: var(--main);
+    box-shadow: none;
+    font-size: 1rem;
+    margin: 5px;
+    max-width: 80%;
+    padding: 5px;
+    width: 40%;
+  }
+
+  button:hover {
+    background-color: var(--primary);
+    opacity: 1;
+  }
+}
+
+.radio {
+  align-items: center;
+  color: var(--aside);
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+
+  label {
+    align-items: center;
+  }
+}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Proptypes from 'prop-types';
+import React from 'react';
+import Proptypes, { bool } from 'prop-types';
 import { Link } from 'react-router-dom';
 // import { AiOutlineFileSearch } from 'react-icons/ai';
 import { GiArchiveResearch, GiCook } from 'react-icons/gi';
@@ -11,8 +11,7 @@ import Search from '../Search';
 
 import styles from './header.module.scss';
 
-function Header({ title, icon, currentPage }) {
-  const [isSearch, setIsSearch] = useState(false);
+function Header({ title, icon, currentPage, isSearch, setIsSearch }) {
   const handleSearch = () => setIsSearch(!isSearch);
 
   return (
@@ -45,6 +44,8 @@ Header.propTypes = {
   title: Proptypes.string.isRequired,
   icon: Proptypes.string.isRequired,
   currentPage: Proptypes.string.isRequired,
+  isSearch: Proptypes.bool.isRequired,
+  setIsSearch: Proptypes.func.isRequired,
 };
 
 export default Header;

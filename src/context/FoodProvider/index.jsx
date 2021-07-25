@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { node } from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import {
   filterFirstLetter,
   filterIngredient,
@@ -16,11 +17,13 @@ import useCategories from '../../hooks/useCategories';
 
 function FoodProvider({ children }) {
   const { comidas: { domain, key: keyName } } = data;
+  const location = useLocation();
   const [foodRecipes, isFetching] = useRecipes(domain, keyName);
   const categories = useCategories(domain, keyName);
   const [foodRecipesByCategory, setFoodRecipesByCategory] = useState({});
   const [isLoading, setIsLoading] = useState(isFetching);
   const [categoriesArea, setCategoriesArea] = useState([]);
+  const [isSearch, setIsSearch] = useState(false);
 
   const [foodApi, setFoodApi] = useState([]);
   const [filterFood, setFilterFood] = useState({ key: '', value: '' });
@@ -33,6 +36,10 @@ function FoodProvider({ children }) {
     };
     requestCategories();
   }, []);
+
+  useEffect(() => {
+    setIsSearch(false);
+  }, [location]);
 
   useEffect(() => {
     async function connect() {
@@ -85,6 +92,8 @@ function FoodProvider({ children }) {
         filterFood,
         setFilterFood,
         categoriesArea,
+        isSearch,
+        setIsSearch,
       } }
     >
       {children}

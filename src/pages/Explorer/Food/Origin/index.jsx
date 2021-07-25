@@ -18,6 +18,8 @@ function FoodOrigin() {
     categoriesArea,
     isLoading,
     setIsLoading,
+    isSearch,
+    setIsSearch,
   } = useContext(FoodContext);
 
   const [filteredRecipes, setFilteredRecipes] = useState(foodRecipes);
@@ -67,7 +69,13 @@ function FoodOrigin() {
 
   return (
     <>
-      <Header title="Explorar Origem" icon currentPage="Foods" />
+      <Header
+        icon
+        title="Explorar Origem"
+        currentPage="Foods"
+        isSearch={ isSearch }
+        setIsSearch={ setIsSearch }
+      />
       <main>
         <select
           data-testid="explore-by-area-dropdown"

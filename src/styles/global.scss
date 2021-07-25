@@ -43,6 +43,11 @@ input, textarea, select, button {
   outline: none;
 }
 
+input {
+  color: var(--paragraph);
+  font-size: 1rem;
+}
+
 main {
   align-items: center;
   display: flex;
@@ -82,34 +87,4 @@ header {
 
 #selected {
   background-color: var(--primary);
-}
-
-#search-container {
-
-  input {
-    background: #fefefe;
-    border-radius: 8px;
-    height: 25px;
-    margin: 5px;
-    width: 99%;
-  }
-
-  button {
-    background: #835afd;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 500;
-    height: 25px;
-    padding: 0 32px;
-  }
-
-  section {
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-
-    label {
-      align-items: center;
-    }
-  }
 }
