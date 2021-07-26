@@ -39,7 +39,7 @@ function Search({ currentPage }) {
       return;
     }
 
-    previousCategory.id = '';
+    if (previousCategory) previousCategory.id = '';
 
     if (previousCategory === targetSelected) {
       const parentSpan = targetParent.parentElement.firstElementChild;
@@ -48,7 +48,6 @@ function Search({ currentPage }) {
       allCategory.id = 'selected';
     } else {
       const targetBackground = isTargetSpan ? targetParent : target;
-      console.log('else');
       targetBackground.id = 'selected';
     }
 

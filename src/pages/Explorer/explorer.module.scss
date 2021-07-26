@@ -1,0 +1,21 @@
+.explorer {
+  height: 100vh;
+  justify-content: center;
+
+  a {
+    align-items: center;
+    background-color: var(--main);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: none;
+    color: var(--header);
+    display: flex;
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    margin: 15px;
+    padding: 5px;
+    transition: 0.5s;
+    width: 80%;
+  }
+}

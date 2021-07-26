@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import { fetchRandomApiFood } from '../../../services/recipesApi';
+import styles from '../explorer.module.scss';
+
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
-import { fetchRandomApiFood } from '../../../services/recipesApi';
 
 function ExploreFoods() {
   const [idMeal, setIdMeal] = useState('');
@@ -17,7 +20,7 @@ function ExploreFoods() {
   return (
     <>
       <Header title="Explorar Comidas" icon="false" />
-      <main>
+      <main className={ styles.explorer }>
         <Link to="/explorar/comidas/ingredientes">
           <h2 data-testid="explore-by-ingredient">Por Ingredientes</h2>
         </Link>
