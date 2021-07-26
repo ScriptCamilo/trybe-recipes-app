@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Header from '../Header';
-import Footer from '../Footer';
-import styles from '../../pages/Explorer';
-import { fetchIngredient } from '../../services/recipesApi';
+
 import FoodContext from '../../context/FoodProvider/FoodContext';
 import DrinkContext from '../../context/DrinkProvider/DrinkContext';
+
+import { fetchIngredient } from '../../services/recipesApi';
+import styles from './ingredients.module.scss';
+
+import Header from '../Header';
+import Footer from '../Footer';
 
 function Ingredients() {
   const { pathname } = useLocation();
@@ -34,35 +37,37 @@ function Ingredients() {
   }
 
   function renderIngredients() {
-    return ingredients.map((ingredient, index) => (
-      <Link
-        key={ index }
-        to={ isMeal ? '/comidas' : '/bebidas' }
-        onClick={ () => filterByIngredients(ingredient[apiProps.str]) }
-      >
-        <div
-          className={ styles.card }
+    return ingredients.map((ingredient, index) => {
+      const thumb = `https://www.${apiProps.domain}.com/images/ingredients/${ingredient[apiProps.str]}-Small.png`;
+      return (
+        <Link
           key={ index }
-          data-testid={ `${index}-ingredient-card` }
+          to={ isMeal ? '/comidas' : '/bebidas' }
+          onClick={ () => filterByIngredients(ingredient[apiProps.str]) }
         >
-          <img
-            className={ styles.img }
-            alt={ ingredient[apiProps.str] }
-            src={ `https://www.${apiProps.domain}.com/images/ingredients/${ingredient[apiProps.str]}-Small.png` }
-            data-testid={ `${index}-card-img` }
-          />
-          <span data-testid={ `${index}-card-name` } className={ styles.cardName }>
+          <div
+            key={ index }
+            data-testid={ `${index}-ingredient-card` }
+            className={ styles.card }
+          >
+            <img
+              alt={ ingredient[apiProps.str] }
+              src={ thumb }
+              data-testid={ `${index}-card-img` }
+            />
             <h2>{ ingredient[apiProps.str] }</h2>
-          </span>
-        </div>
-      </Link>
-    ));
+          </div>
+        </Link>
+      );
+    });
   }
 
   return (
     <div className={ styles.id }>
       <Header title="Explorar Ingredientes" icon="false" />
-      {ingredients && renderIngredients()}
+      <section className={ styles.cards }>
+        {ingredients && renderIngredients()}
+      </section>
       <Footer />
     </div>
   );
