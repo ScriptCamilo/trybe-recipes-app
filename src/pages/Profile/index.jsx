@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import styles from './profile.module.scss';
 
 function Profile() {
   function getEmail() {
@@ -10,38 +11,35 @@ function Profile() {
   }
 
   return (
-    <div>
+    <>
       <Header title="Perfil" icon="false" />
-      <p data-testid="profile-email">{getEmail()}</p>
-      <div>
-        <Link to="/receitas-feitas">
-          <button
-            type="button"
-            data-testid="profile-done-btn"
-          >
-            Receitas Feitas
-          </button>
-        </Link>
-        <Link to="/receitas-favoritas">
-          <button
-            type="button"
-            data-testid="profile-favorite-btn"
-          >
-            Receitas Favoritas
-          </button>
-        </Link>
-      </div>
-      <Link to="/">
-        <button
-          onClick={ () => localStorage.clear() }
-          type="button"
-          data-testid="profile-logout-btn"
+      <main className={ styles.profileContainer }>
+        <h2 data-testid="profile-email">{getEmail()}</h2>
+
+        <Link
+          to="/receitas-feitas"
+          data-testid="profile-done-btn"
         >
-          Sair
-        </button>
-      </Link>
+          <h3>Receitas Feitas</h3>
+        </Link>
+        <Link
+          to="/receitas-favoritas"
+          data-testid="profile-favorite-btn"
+        >
+          <h3>Receitas Favoritas</h3>
+        </Link>
+
+        <Link
+          className={ styles.logout }
+          to="/"
+          data-testid="profile-logout-btn"
+          onClick={ () => localStorage.clear() }
+        >
+          <h3>Sair</h3>
+        </Link>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
