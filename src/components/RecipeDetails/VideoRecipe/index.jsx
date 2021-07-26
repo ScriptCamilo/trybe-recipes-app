@@ -19,7 +19,6 @@ function VideoRecipe(props) {
 
   const renderVideo = () => (
     <div className={ styles.videoRecipeContainer }>
-      <h2>Video</h2>
       <iframe
         data-testid="video"
         width="100%"

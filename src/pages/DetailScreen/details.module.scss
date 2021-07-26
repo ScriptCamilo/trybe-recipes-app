@@ -15,10 +15,14 @@
   }
 }
 
+.topContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
 .interactiveBtnsContainer {
-  position: absolute;
-  right: 5px;
-  top: 370px;
 
   button {
     border: none;
@@ -58,10 +62,12 @@
 
 .basicInfoContainer {
   box-shadow: 0 1px 10px var(--border);
+  display: flex;
+  flex-direction: column;
   margin-bottom: 15px;
 
   h1, p {
-    margin-left: 5px;
+    margin-left: 2px;
   }
 }
 
@@ -79,8 +85,6 @@
   margin: 10px 0;
 
   iframe {
-    background-color: var(--primary);
-    // border-radius: 9px;
     margin: 5px;
     padding: 10px;
     text-align: center;

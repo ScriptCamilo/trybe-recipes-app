@@ -8,7 +8,6 @@ import styles from './details.module.scss';
 
 import Loading from '../../components/Loading';
 import BasicInfo from '../../components/RecipeDetails/BasicInfo';
-import InteractiveButtons from '../../components/RecipeDetails/InteractiveButtons';
 import Ingredients from '../../components/RecipeDetails/Ingredients';
 import VideoRecipe from '../../components/RecipeDetails/VideoRecipe';
 import Instructions from '../../components/RecipeDetails/Instructions';
@@ -45,14 +44,11 @@ function DetailScreen() {
   function renderDetails() {
     return (
       <div className={ styles.detailsContainer }>
+
         <BasicInfo
           name={ type.name }
           category={ type.category }
           recipe={ recipeDetails }
-        />
-
-        <InteractiveButtons
-          recipeDetails={ recipeDetails }
           foodOrDrink={ foodOrDrink }
           type={ type }
           id={ id }

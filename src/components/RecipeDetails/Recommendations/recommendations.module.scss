@@ -16,17 +16,18 @@
       text-shadow: 1px 1px 5px var(--border);
     }
     background-color: var(--primary);
-    border-radius: 9px;
+    border-radius: 15px;
+    box-shadow: 2px 5px 10px var(--border);
     display: flex;
     flex-flow: wrap column;
-    height: 172px;
+    height: 11rem;
     margin: 10px;
-    width: 161px;
+    width: 10rem;
 
     img {
       border-radius: 9px 9px 0 0;
       height: 115px;
-      width: 161px;
+      width: 10rem;
     }
   }
 }
