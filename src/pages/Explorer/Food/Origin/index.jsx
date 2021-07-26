@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { filterByArea } from '../../../../services/recipesApi';
 import FoodContext from '../../../../context/FoodProvider/FoodContext';
+import { filterByArea } from '../../../../services/recipesApi';
+import styles from './origin.module.scss';
 
 import Header from '../../../../components/Header';
 import MainCard from '../../../../components/MainCard';
@@ -76,11 +77,12 @@ function FoodOrigin() {
         isSearch={ isSearch }
         setIsSearch={ setIsSearch }
       />
-      <main>
+      <main className={ isSearch ? styles.isSearch : '' }>
         <select
           data-testid="explore-by-area-dropdown"
           onChange={ (e) => handleSelect(e) }
           value={ currentCategory }
+          className={ styles.select }
         >
           <option data-testid="All-option">All</option>
           {categoriesArea.map(({ strArea }) => (
@@ -89,16 +91,23 @@ function FoodOrigin() {
             </option>
           ))}
         </select>
-        {isLoading ? <Loading /> : filteredRecipes.slice(0, MEALS_SIZE)
-          .map(({ idMeal, strMeal, strMealThumb }, index) => (
-            <MainCard
-              currentPage="area"
-              key={ index }
-              index={ index }
-              id={ idMeal }
-              name={ strMeal }
-              thumb={ strMealThumb }
-            />))}
+
+        {isLoading ? <Loading /> : (
+          <section className={ styles.cards }>
+            {
+              filteredRecipes.slice(0, MEALS_SIZE)
+                .map(({ idMeal, strMeal, strMealThumb }, index) => (
+                  <MainCard
+                    currentPage="area"
+                    key={ index }
+                    index={ index }
+                    id={ idMeal }
+                    name={ strMeal }
+                    thumb={ strMealThumb }
+                  />))
+            }
+          </section>
+        )}
       </main>
       <Footer />
     </>

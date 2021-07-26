@@ -1,0 +1,27 @@
+.select {
+  align-items: center;
+  background-color: var(--main);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: none;
+  color: var(--header);
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  margin: 10px;
+  padding: 5px;
+  transition: 0.5s;
+  width: 80%;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.isSearch {
+  padding: 0;
+}

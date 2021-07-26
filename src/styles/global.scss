@@ -43,7 +43,7 @@ input, textarea, select, button {
   outline: none;
 }
 
-input {
+input, select {
   color: var(--paragraph);
   font-size: 1rem;
 }
