@@ -84,17 +84,11 @@ function InProgress() {
 
   function renderDetails() {
     return (
-      <>
+      <div className={ styles.progressContainer }>
         <BasicInfo
           name={ type.name }
           category={ type.category }
           recipe={ recipeDetails }
-        />
-        <InteractiveButtons
-          recipeDetails={ recipeDetails }
-          foodOrDrink={ foodOrDrink }
-          type={ type }
-          id={ id }
         />
 
         <Steps
@@ -105,14 +99,17 @@ function InProgress() {
 
         <Instructions name={ type.name } recipe={ recipeDetails } />
 
-        <Button
-          handleClick={ handleClick }
-          dataTestid="finish-recipe-btn"
-          isDisabled={ !isButtonValidated }
-        >
-          <span>Finish</span>
-        </Button>
-      </>
+        <section className={ styles.theEnd }>
+          <Button
+            handleClick={ handleClick }
+            dataTestid="finish-recipe-btn"
+            isDisabled={ !isButtonValidated }
+          >
+            <span>Finish</span>
+          </Button>
+        </section>
+
+      </div>
     );
   }
 

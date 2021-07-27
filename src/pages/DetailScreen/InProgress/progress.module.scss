@@ -1,1 +1,23 @@
-// InProgress Css
+.progressContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    color: var(--paragraph);
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.theEnd {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 80%;
+
+  button {
+    width: 100%;
+  }
+}

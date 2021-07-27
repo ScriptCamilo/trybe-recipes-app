@@ -7,7 +7,9 @@ function Instructions(props) {
   return (
     <div className={ styles.instructionsContainer }>
       <h2>Instructions</h2>
-      <p data-testid="instructions">{strInstructions}</p>
+      <section>
+        <p data-testid="instructions">{strInstructions}</p>
+      </section>
     </div>
   );
 }

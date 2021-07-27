@@ -1,6 +1,8 @@
 import React from 'react';
 import { bool, func, string } from 'prop-types';
 
+import styles from './check.module.scss';
+
 function Checkbox({ keyValue, value, handleProgress, isChecked }) {
   const handleChange = ({ target: { name, checked } }) => {
     handleProgress(name, checked);
@@ -15,7 +17,11 @@ function Checkbox({ keyValue, value, handleProgress, isChecked }) {
         name={ keyValue }
         onChange={ handleChange }
       />
-      <p>{!value ? keyValue : `${keyValue} - ${value}`}</p>
+      <p
+        className={ isChecked ? styles.checked : '' }
+      >
+        {!value ? keyValue : `${keyValue} - ${value}`}
+      </p>
     </label>
   );
 }
