@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
+import styles from './filter.module.scss';
+
+import Button from '../Button';
+
 function FilterButtons(props) {
   const { pathname } = useLocation();
   const { recipes, setFilteredRecipes } = props;
@@ -26,28 +30,28 @@ function FilterButtons(props) {
 
   function renderFilterButtons() {
     return (
-      <div>
-        <button
+      <div className={ styles.filterButtons }>
+        <Button
           type="button"
           data-testid="filter-by-all-btn"
-          onClick={ handleFilterButtons }
+          handleClick={ handleFilterButtons }
         >
           All
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           data-testid="filter-by-food-btn"
-          onClick={ handleFilterButtons }
+          handleClick={ handleFilterButtons }
         >
           Food
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           data-testid="filter-by-drink-btn"
-          onClick={ handleFilterButtons }
+          handleClick={ handleFilterButtons }
         >
           Drinks
-        </button>
+        </Button>
       </div>
     );
   }

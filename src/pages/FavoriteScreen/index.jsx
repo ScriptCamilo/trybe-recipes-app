@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../components/Header';
-import FilterButtons from '../../components/FilterButtons';
+
 import styles from './favorite.module.scss';
 import shareIcon from '../../images/shareIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
+
+import Header from '../../components/Header';
+import FilterButtons from '../../components/FilterButtons';
+import InteractiveButtons from '../../components/RecipeDetails/InteractiveButtons';
 
 function FavoriteScreen() {
   const FAVORITE_RECIPES = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -27,7 +30,7 @@ function FavoriteScreen() {
 
   function renderFavoriteRecipesCard() {
     return filteredRecipes.map((recipe, index) => (
-      <div className={ styles.favoriteRecipesCard } key={ index }>
+      <div className={ styles.card } key={ index }>
         <Link to={ `${recipe.type}s/${recipe.id}` }>
           <img
             data-testid={ `${index}-horizontal-image` }
@@ -35,36 +38,15 @@ function FavoriteScreen() {
             alt={ recipe.name }
           />
         </Link>
-        <div>
+        <section className={ styles.infos }>
           <p data-testid={ `${index}-horizontal-top-text` }>
             {recipe.type === 'comida'
               ? `${recipe.area} - ${recipe.category}` : recipe.alcoholicOrNot}
           </p>
           <Link to={ `${recipe.type}s/${recipe.id}` }>
-            <h3 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h3>
+            <h2 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h2>
           </Link>
-        </div>
-        <div>
-          <button
-            src={ shareIcon }
-            type="button"
-            className={ styles.shareButton }
-            onClick={ () => copyToClipBoard(recipe) }
-            data-testid={ `${index}-horizontal-share-btn` }
-
-          >
-            {' '}
-          </button>
-          <button
-            src={ blackHeartIcon }
-            type="button"
-            className={ styles.favoriteButton }
-            onClick={ () => removeRecipeFromLS(recipe.id) }
-            data-testid={ `${index}-horizontal-favorite-btn` }
-          >
-            {' '}
-          </button>
-        </div>
+        </section>
       </div>
     ));
   }
@@ -77,9 +59,9 @@ function FavoriteScreen() {
           setFilteredRecipes={ setFilteredRecipes }
         />
         {isCopy && <span>Link copiado!</span>}
-        <div>
+        <section className={ styles.cards }>
           {filteredRecipes && renderFavoriteRecipesCard()}
-        </div>
+        </section>
       </div>
     );
   }
@@ -87,7 +69,9 @@ function FavoriteScreen() {
   return (
     <>
       <Header title="Receitas Favoritas" icon="false" />
-      {renderFavoriteRecipes()}
+      <main>
+        {renderFavoriteRecipes()}
+      </main>
     </>
   );
 }

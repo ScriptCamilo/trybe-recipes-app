@@ -1,0 +1,27 @@
+.filterButtons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  button {
+    background-color: var(--main);
+    box-shadow: none;
+    font-size: 1rem;
+    margin: 5px;
+    max-width: 80%;
+    padding: 5px;
+    width: 40%;
+
+    span {
+      margin: 0;
+      max-width: 10ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  button:hover {
+    opacity: 1;
+  }
+}
