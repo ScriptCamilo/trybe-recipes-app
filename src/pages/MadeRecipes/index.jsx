@@ -20,7 +20,7 @@ function MadeRecipes() {
 
   function renderMadeRecipeCards() {
     return filteredRecipes.map((recipe, index) => (
-      <div className={ styles.madeRecipesCard } key={ index }>
+      <div className={ styles.card } key={ index }>
         <Link to={ `${recipe.type}s/${recipe.id}` }>
           <img
             data-testid={ `${index}-horizontal-image` }
@@ -28,37 +28,26 @@ function MadeRecipes() {
             alt={ recipe.name }
           />
         </Link>
-        <div>
+        <section className={ styles.infos }>
           <p data-testid={ `${index}-horizontal-top-text` }>
             {recipe.type === 'comida'
               ? `${recipe.area} - ${recipe.category}` : recipe.alcoholicOrNot}
           </p>
           <Link to={ `${recipe.type}s/${recipe.id}` }>
-            <h3 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h3>
+            <h2 data-testid={ `${index}-horizontal-name` }>{recipe.name}</h2>
           </Link>
           <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
-        </div>
-        <div>
-          <button
-            type="button"
-            className={ styles.shareButton }
-            onClick={ () => copyToClipBoard(recipe) }
-            data-testid={ `${index}-horizontal-share-btn` }
-          >
-            <GiShare size="2rem" />
-          </button>
-        </div>
-
-        <div>
-          {(recipe.tags !== 'null' && recipe.tags) && recipe.tags
-            .map((tag) => (
-              <span
-                data-testid={ `${index}-${tag}-horizontal-tag` }
-                key={ tag }
-              >
-                {tag}
-              </span>))}
-        </div>
+          <div>
+            {(recipe.tags !== 'null' && recipe.tags) && recipe.tags
+              .map((tag) => (
+                <p
+                  data-testid={ `${index}-${tag}-horizontal-tag` }
+                  key={ tag }
+                >
+                  {tag}
+                </p>))}
+          </div>
+        </section>
       </div>
     ));
   }
@@ -71,9 +60,9 @@ function MadeRecipes() {
           setFilteredRecipes={ setFilteredRecipes }
         />
         {isCopy && <span>Link copiado!</span>}
-        <div>
+        <section className={ styles.cards }>
           {renderMadeRecipeCards()}
-        </div>
+        </section>
       </div>
     );
   }
@@ -81,7 +70,9 @@ function MadeRecipes() {
   return (
     <>
       <Header title="Receitas Feitas" icon="false" />
-      {renderMadeRecipes()}
+      <main>
+        {renderMadeRecipes()}
+      </main>
     </>
   );
 }

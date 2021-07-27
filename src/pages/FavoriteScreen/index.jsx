@@ -7,7 +7,6 @@ import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
 import Header from '../../components/Header';
 import FilterButtons from '../../components/FilterButtons';
-import InteractiveButtons from '../../components/RecipeDetails/InteractiveButtons';
 
 function FavoriteScreen() {
   const FAVORITE_RECIPES = JSON.parse(localStorage.getItem('favoriteRecipes'));

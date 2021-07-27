@@ -57,8 +57,8 @@ function FilterButtons(props) {
   }
 
   function noRecipeFound() {
-    let msgStatus = 'Não há receitas favoritas';
-    if (pathname === '/receitas-feitas') msgStatus = 'Não há receitas feitas';
+    let msgStatus = <p>Não há receitas favoritas</p>;
+    if (pathname === '/receitas-feitas') msgStatus = <p>Não há receitas feitas</p>;
     return msgStatus;
   }
 
