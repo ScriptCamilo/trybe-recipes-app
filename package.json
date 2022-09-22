@@ -1,7 +1,6 @@
 {
   "name": "recipes-app-test",
   "version": "0.1.0",
-  "homepage": "https://scriptcamilo.github.io/trybe-recipes-app",
   "private": true,
   "dependencies": {
     "@sheerun/mutationobserver-shim": "^0.3.3",
@@ -25,8 +24,6 @@
     "websocket-extensions": ">=0.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",
