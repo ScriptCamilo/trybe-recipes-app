@@ -1,5 +1,5 @@
 import React from 'react';
-import Proptypes, { bool } from 'prop-types';
+import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 // import { AiOutlineFileSearch } from 'react-icons/ai';
 import { GiArchiveResearch, GiCook } from 'react-icons/gi';

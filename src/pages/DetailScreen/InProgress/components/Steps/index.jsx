@@ -31,7 +31,7 @@ function Steps({ recipe, origin, setIsButtonValidated }) {
     inProgressStoraged[pathType][id] = stepsInProgress;
 
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressStoraged));
-  }, [stepsInProgress]);
+  }, [stepsInProgress, id, pathType]);
 
   const handleProgress = (name, checked) => {
     if (checked) {

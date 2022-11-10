@@ -7,7 +7,6 @@ import styles from './progress.module.scss';
 
 import Loading from '../../../components/Loading';
 import BasicInfo from '../../../components/RecipeDetails/BasicInfo';
-import InteractiveButtons from '../../../components/RecipeDetails/InteractiveButtons';
 import Instructions from '../../../components/RecipeDetails/Instructions';
 import Button from '../../../components/Button';
 import Steps from './components/Steps';

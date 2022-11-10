@@ -32,14 +32,13 @@ function FoodOrigin() {
   }
 
   useEffect(() => {
-    console.log('Get Area');
     async function requestRecipe() {
       try {
         const res = await filterByArea(currentCategory);
         setFilteredRecipes(res);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     if (currentCategory !== 'All') {
@@ -48,14 +47,12 @@ function FoodOrigin() {
     } else {
       setFilteredRecipes(foodRecipes);
     }
-  }, [currentCategory]);
+  }, [currentCategory, foodRecipes, setIsLoading]);
 
   useEffect(() => {
     const { meals } = foodApi;
     if (meals) {
-      console.log('foodApi');
       setFilteredRecipes(meals);
-      console.log(meals);
       if (meals.length === 1) {
         history.push(`/comidas/${meals[0].idMeal}`);
       }
@@ -64,14 +61,12 @@ function FoodOrigin() {
       // eslint-disable-next-line no-alert
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
-  }, [foodApi]);
-
-  console.log(filteredRecipes);
+  }, [foodApi, history]);
 
   return (
     <>
       <Header
-        icon
+        icon="false"
         title="Explorar Origem"
         currentPage="Foods"
         isSearch={ isSearch }

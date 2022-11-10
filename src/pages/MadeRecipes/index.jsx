@@ -1,22 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { GiShare } from 'react-icons/gi';
 import Header from '../../components/Header';
 import styles from './madeRecipes.module.scss';
 import FilterButtons from '../../components/FilterButtons';
 
 function MadeRecipes() {
   const MADE_RECIPES = JSON.parse(localStorage.getItem('doneRecipes'));
-  const [isCopy, setIsCopy] = useState(false);
   const [filteredRecipes, setFilteredRecipes] = useState(MADE_RECIPES || []);
-
-  function copyToClipBoard({ type, id }) {
-    const path = `${type}s/${id}`;
-    const FIVE_SECONDS = 5000;
-    setIsCopy(true);
-    setTimeout(() => setIsCopy(false), FIVE_SECONDS);
-    return navigator.clipboard.writeText(`http://localhost:3000/${path}`);
-  }
 
   function renderMadeRecipeCards() {
     return filteredRecipes.map((recipe, index) => (
@@ -59,7 +49,6 @@ function MadeRecipes() {
           recipes={ MADE_RECIPES || [] }
           setFilteredRecipes={ setFilteredRecipes }
         />
-        {isCopy && <span>Link copiado!</span>}
         <section className={ styles.cards }>
           {renderMadeRecipeCards()}
         </section>
