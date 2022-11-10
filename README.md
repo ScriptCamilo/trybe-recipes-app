@@ -2,7 +2,7 @@
 # Recipes App
 
 This project was developed in the last frontend module at Trybe Course. The base code
-was created by Trybe itself for evaluative purposes.\
+was created by Trybe itself for evaluative purposes.
 
 ## Features
 
