@@ -37,10 +37,17 @@ was created by Trybe itself for evaluative purposes.
 
 ## Screenshots
 
-<img src="./public/assets/images/login.png" alt="Login screen" />
-<img src="./public/assets/images/login-activate.png" alt="Login screen" />
-<img src="./public/assets/images/drinks.png" alt="Login screen" />
-<img src="./public/assets/images/meals.png" alt="Login screen" />
+<div align="center">
+  <div>
+    <img src="./public/assets/images/login.png" alt="Login screen" height="600" />
+    <img src="./public/assets/images/login-activate.png" alt="Login screen" height="600" />
+  </div>
+
+  <div>
+    <img src="./public/assets/images/drinks.png" alt="Login screen" height="600" />
+    <img src="./public/assets/images/meals.png" alt="Login screen" height="600" />
+  </div>
+</div>
 
 ## Run Locally
 
