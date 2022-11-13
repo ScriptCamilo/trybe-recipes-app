@@ -81,7 +81,7 @@ Start the server
 - [@Victor Canto](https://www.github.com/victorcanto)
 - [@Samuel Melo](https://www.github.com/samuelmmjr)
 - [@Nilson dos Santos](https://www.github.com/nyxnil)
-- [@Roberto Nascimento](https://www.linkedin.com/in/roberto-natividade/)
+- [@Roberto Nascimento](https://www.github.com/robertonatividade)
 
 ## License
 
